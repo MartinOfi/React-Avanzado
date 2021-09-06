@@ -1,7 +1,6 @@
-import { useContext, useState } from "react";
-import { Link } from "react-router-dom"
+import { lazy,Suspense, useContext } from "react";
 import { CartContext } from "../../context/Cart";
-
+const CardProduct = lazy(()=>import('../../components/card/card'))
 
 const ListContainer = () =>{
   const {listProducts} = useContext(CartContext)
@@ -10,11 +9,9 @@ const ListContainer = () =>{
       <h1>Listado de Productos</h1>
       {listProducts.map((item) => {
         return (
-          <div key={item.id}>
-            <strong>{item.name}</strong>
-            <a href="#">${item.price}</a>
-            <Link to={`/products/${item.id}`}>Ver Producto</Link>
-          </div>
+          <Suspense fallback={<div>Loading...</div>}>
+            <CardProduct product={item}/>
+          </Suspense>
         );
       })}
     </div>

@@ -4,7 +4,7 @@ export const CartContext= createContext()
 
 export const CartProvider = ({children})=>{
   const list = [
-    { id: 1, name: "shoes", price: 21 },
+    { id: 1, name: "shoes 2", price: 212 },
     { id: 2, name: "t-shirt", price: 33 },
     { id: 3, name: "hat", price: 90 },
   ];
